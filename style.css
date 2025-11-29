@@ -1,0 +1,23 @@
+/* Extracted site styles (moved from index.html) */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4;
+}
+
+.nav-active {
+    color: #22d3ee !important; /* cyan-400 */
+}
+
+/* small helpers that live outside Tailwind so they can be customized easily */
+/* (kept tiny — the rest of the layout is driven by Tailwind classes) */
