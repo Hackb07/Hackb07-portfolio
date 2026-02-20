@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackb07</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,35 +32,107 @@
             }
         }
     </script>
-    
+
     <link rel="stylesheet" href="./style.css">
+    <style>
+        @keyframes crtGlitch {
+            0% {
+                filter: contrast(1) sepia(0) hue-rotate(0deg) invert(0);
+                opacity: 1;
+            }
+
+            20% {
+                filter: contrast(3) sepia(1) hue-rotate(90deg) invert(1);
+                transform: translateX(-5px) skewX(2deg);
+                opacity: 0.8;
+            }
+
+            40% {
+                filter: contrast(2) sepia(0.5) hue-rotate(180deg) invert(0);
+                transform: translateX(5px) skewX(-2deg);
+                opacity: 0.9;
+            }
+
+            60% {
+                filter: contrast(4) sepia(1) hue-rotate(270deg) invert(1);
+                transform: translateY(-3px) scale(1.05);
+            }
+
+            80% {
+                filter: contrast(1.5) sepia(0.2) hue-rotate(360deg) invert(0);
+                transform: translateY(3px) scale(0.95);
+                opacity: 0.5;
+            }
+
+            100% {
+                filter: contrast(1) sepia(0) hue-rotate(0deg) invert(0);
+                transform: none;
+                opacity: 1;
+            }
+        }
+
+        .time-travel-glitch {
+            animation: crtGlitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite both;
+        }
+    </style>
 </head>
+
 <body class="bg-slate-900 text-slate-200 font-sans selection:bg-cyan-500 selection:text-white">
+
+    <!-- Transition Overlay (Hidden by default) -->
+    <div id="transition-overlay"
+        class="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center z-[9000] text-white opacity-0 pointer-events-none transition-opacity duration-300">
+        <h1 class="text-3xl font-light text-slate-400 mb-2 tracking-widest uppercase">System Override</h1>
+        <div id="countdown-year"
+            class="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 font-mono tracking-tight mb-8">
+            2026
+        </div>
+        <p class="text-red-500 font-mono text-sm uppercase animate-pulse tracking-widest mt-10">
+            ERROR 1998: Temporal displacement detected...
+        </p>
+    </div>
 
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="scrollToSection('home')">
                     <i data-lucide="terminal" class="w-8 h-8 text-cyan-400"></i>
-                    <span class="font-bold text-xl tracking-tighter text-white">Hack<span class="text-cyan-400">b07</span></span>
+                    <span class="font-bold text-xl tracking-tighter text-white">Hack<span
+                            class="text-cyan-400">b07</span></span>
                 </div>
-                
-                <div class="hidden lg:block"> <div class="ml-10 flex items-baseline space-x-6">
-                        <button onclick="scrollToSection('about')" class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300" data-section="about">About</button>
-                        <button onclick="scrollToSection('skills')" class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300" data-section="skills">Skills</button>
-                        <button onclick="scrollToSection('projects')" class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300" data-section="projects">Projects</button>
-                        <button onclick="scrollToSection('achievements')" class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300" data-section="achievements">Achievements</button>
-                        <button onclick="scrollToSection('certifications')" class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300" data-section="certifications">Certifications</button>
-                        <button onclick="scrollToSection('contact')" class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300" data-section="contact">Contact</button>
-                        
-                        <a href="https://drive.google.com/file/d/1TQqWBkWYrt3YMPkjL-kyHmm2ENShOTpS/view?usp=sharing" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2">
+
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <button onclick="scrollToSection('about')"
+                            class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300"
+                            data-section="about">About</button>
+                        <button onclick="scrollToSection('skills')"
+                            class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300"
+                            data-section="skills">Skills</button>
+                        <button onclick="scrollToSection('projects')"
+                            class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300"
+                            data-section="projects">Projects</button>
+                        <button onclick="scrollToSection('achievements')"
+                            class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300"
+                            data-section="achievements">Achievements</button>
+                        <button onclick="scrollToSection('certifications')"
+                            class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300"
+                            data-section="certifications">Certifications</button>
+                        <button onclick="scrollToSection('contact')"
+                            class="nav-link hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium text-slate-300"
+                            data-section="contact">Contact</button>
+
+                        <a href="https://drive.google.com/file/d/1TQqWBkWYrt3YMPkjL-kyHmm2ENShOTpS/view?usp=sharing"
+                            target="_blank"
+                            class="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2">
                             <i data-lucide="download" class="w-4 h-4"></i> Resume
                         </a>
                     </div>
                 </div>
 
                 <div class="lg:hidden">
-                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                    <button id="mobile-menu-btn"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
                         <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -68,13 +141,20 @@
 
         <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-b border-slate-800 shadow-xl">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <button onclick="scrollToSection('about')" class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">About</button>
-                <button onclick="scrollToSection('skills')" class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Skills</button>
-                <button onclick="scrollToSection('projects')" class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Projects</button>
-                <button onclick="scrollToSection('achievements')" class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Achievements</button>
-                <button onclick="scrollToSection('certifications')" class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Certifications</button>
-                <button onclick="scrollToSection('contact')" class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Contact</button>
-                <a href="PASTE_YOUR_DRIVE_LINK_HERE" target="_blank" class="text-cyan-400 block px-3 py-2 rounded-md text-base font-bold w-full text-left flex items-center gap-2">
+                <button onclick="scrollToSection('about')"
+                    class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">About</button>
+                <button onclick="scrollToSection('skills')"
+                    class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Skills</button>
+                <button onclick="scrollToSection('projects')"
+                    class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Projects</button>
+                <button onclick="scrollToSection('achievements')"
+                    class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Achievements</button>
+                <button onclick="scrollToSection('certifications')"
+                    class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Certifications</button>
+                <button onclick="scrollToSection('contact')"
+                    class="text-slate-300 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium w-full text-left">Contact</button>
+                <a href="PASTE_YOUR_DRIVE_LINK_HERE" target="_blank"
+                    class="text-cyan-400 block px-3 py-2 rounded-md text-base font-bold w-full text-left flex items-center gap-2">
                     <i data-lucide="download" class="w-4 h-4"></i> Download Resume
                 </a>
             </div>
@@ -82,13 +162,16 @@
     </nav>
 
     <section id="home" class="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+        </div>
         <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_200px,#06b6d41a,transparent)]"></div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
                 <div class="flex-1 text-center md:text-left space-y-6">
-                    <div class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-mono mb-2 animate-fade-in">
+                    <div
+                        class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-mono mb-2 animate-fade-in">
                         Hello World, I'm
                     </div>
                     <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight">
@@ -100,34 +183,48 @@
                     <p class="text-slate-400 max-w-lg mx-auto md:mx-0 text-lg leading-relaxed">
                         Deep Learning • NLP • Cybersecurity • Open Source Innovator
                     </p>
-                    
+
                     <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
-                        <button onclick="scrollToSection('projects')" class="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
-                            View Work
+                        <button onclick="startTimelineGlitch()"
+                            class="px-8 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white rounded-lg font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:shadow-[0_0_30px_rgba(6,182,212,0.9)] hover:-translate-y-1 animate-pulse border border-cyan-300 relative overflow-hidden group">
+                            <span class="relative z-10 flex items-center gap-2 tracking-wider">
+                                <i data-lucide="sparkles"
+                                    class="w-4 h-4 text-white group-hover:text-yellow-200 transition-colors"></i> READ
+                                MORE...
+                            </span>
                         </button>
-                        <button onclick="scrollToSection('contact')" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium border border-slate-700 transition-all">
+                        <button onclick="scrollToSection('contact')"
+                            class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium border border-slate-700 transition-all">
                             Contact Me
                         </button>
                     </div>
 
                     <div class="flex items-center justify-center md:justify-start gap-6 pt-8 text-slate-500">
-                        <a href="https://github.com/Hackb07" target="_blank" class="hover:text-white transition-colors"><i data-lucide="github" class="w-6 h-6"></i></a>
-                        <a href="https://linkedin.com/in/b-tharun-bala-hackb07" target="_blank" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                        <a href="mailto:balat4880@gmail.com" class="hover:text-white transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+                        <a href="https://github.com/Hackb07" target="_blank"
+                            class="hover:text-white transition-colors"><i data-lucide="github" class="w-6 h-6"></i></a>
+                        <a href="https://linkedin.com/in/b-tharun-bala-hackb07" target="_blank"
+                            class="hover:text-white transition-colors"><i data-lucide="linkedin"
+                                class="w-6 h-6"></i></a>
+                        <a href="mailto:balat4880@gmail.com" class="hover:text-white transition-colors"><i
+                                data-lucide="mail" class="w-6 h-6"></i></a>
                     </div>
                 </div>
 
                 <div class="flex-1 flex justify-center md:justify-end">
                     <div class="relative w-64 h-64 md:w-96 md:h-96 group">
-                        <div class="absolute inset-0 bg-cyan-500 rounded-full blur-[100px] opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                        <div class="relative w-full h-full rounded-full border-2 border-slate-700 overflow-hidden bg-slate-800 p-2">
-                            <img src="https://github.com/Hackb07.png" alt="B. Tharun Bala" class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        <div
+                            class="absolute inset-0 bg-cyan-500 rounded-full blur-[100px] opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                        </div>
+                        <div
+                            class="relative w-full h-full rounded-full border-2 border-slate-700 overflow-hidden bg-slate-800 p-2">
+                            <img src="https://github.com/Hackb07.png" alt="B. Tharun Bala"
+                                class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500">
             <i data-lucide="chevron-down" class="w-6 h-6"></i>
         </div>
@@ -142,7 +239,9 @@
                         About Me
                     </h2>
                     <p class="text-slate-300 text-lg leading-relaxed">
-                        I leverage my expertise in Artificial Intelligence, Machine Learning, and Cybersecurity to build secure, scalable, and ethical intelligent systems. My vision is to bridge the gap between human-centered design and AI-driven innovation.
+                        I leverage my expertise in Artificial Intelligence, Machine Learning, and Cybersecurity to build
+                        secure, scalable, and ethical intelligent systems. My vision is to bridge the gap between
+                        human-centered design and AI-driven innovation.
                     </p>
                     <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 space-y-4">
                         <h3 class="text-xl font-semibold text-white flex items-center gap-2">
@@ -154,27 +253,31 @@
                             <div class="text-cyan-400 text-xs mt-1 font-mono">2023 – 2027</div>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-center gap-2 text-slate-400">
                         <i data-lucide="map-pin" class="w-4 h-4 text-cyan-500"></i>
                         Hosur, Tamil Nadu, India
                     </div>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                    <div
+                        class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
                         <div class="text-4xl font-bold text-cyan-400 mb-2">20+</div>
                         <div class="text-slate-400 text-sm">Repositories</div>
                     </div>
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors mt-8">
+                    <div
+                        class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors mt-8">
                         <div class="text-4xl font-bold text-cyan-400 mb-2">3+</div>
                         <div class="text-slate-400 text-sm">Research Projects</div>
                     </div>
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                    <div
+                        class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
                         <div class="text-4xl font-bold text-cyan-400 mb-2">2027</div>
                         <div class="text-slate-400 text-sm">Graduation Year</div>
                     </div>
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors mt-8">
+                    <div
+                        class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors mt-8">
                         <div class="text-4xl font-bold text-cyan-400 mb-2">∞</div>
                         <div class="text-slate-400 text-sm">Passion for AI</div>
                     </div>
@@ -191,65 +294,104 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
+                <div
+                    class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
                         <i data-lucide="code" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-4">Languages</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Python</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">C</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">C++</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Java</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Kotlin</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">JavaScript</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">SQL</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Bash</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Python</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">C</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">C++</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Java</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Kotlin</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">JavaScript</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">SQL</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Bash</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
+                <div
+                    class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
                         <i data-lucide="cpu" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-4">AI & ML</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">TensorFlow</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Keras</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">PyTorch</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Scikit-learn</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">OpenCV</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">NLP</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Hugging Face</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">TensorFlow</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Keras</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">PyTorch</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Scikit-learn</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">OpenCV</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">NLP</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Hugging
+                            Face</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
+                <div
+                    class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
                         <i data-lucide="globe" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-4">Web & Cloud</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">React.js</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Flask</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Firebase</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Google Cloud</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">GitHub Actions</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">React.js</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Flask</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Firebase</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Google
+                            Cloud</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">GitHub
+                            Actions</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Docker</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
+                <div
+                    class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 mb-6">
                         <i data-lucide="shield" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-4">Security & Tools</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Ethical Hacking</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">OWASP</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Linux (Arch)</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Git</span>
-                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Figma</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Ethical
+                            Hacking</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">OWASP</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Linux
+                            (Arch)</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Git</span>
+                        <span
+                            class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">Figma</span>
                     </div>
                 </div>
             </div>
@@ -265,129 +407,177 @@
                         A selection of my open source contributions and research work.
                     </p>
                 </div>
-                <a href="https://github.com/Hackb07" target="_blank" class="hidden md:flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+                <a href="https://github.com/Hackb07" target="_blank"
+                    class="hidden md:flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
                     View all on GitHub <i data-lucide="external-link" class="w-4 h-4"></i>
                 </a>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
+                <div
+                    class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">AI / Legal Tech</div>
-                            <a href="https://github.com/Hackb07" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">AI / Legal
+                                Tech</div>
+                            <a href="https://github.com/Hackb07" target="_blank"
+                                class="text-slate-400 hover:text-white transition-colors">
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">LegalEase</h3>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            LegalEase</h3>
                         <p class="text-slate-400 text-sm mb-6 flex-1">
-                            AI-Powered chatbot capable of understanding Indian legal queries using custom-trained NLP models.
+                            AI-Powered chatbot capable of understanding Indian legal queries using custom-trained NLP
+                            models.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Python</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">TensorFlow</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Flask</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">NLP</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Python</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">TensorFlow</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Flask</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">NLP</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
+                <div
+                    class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
                             <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">Web App</div>
-                            <a href="https://github.com/Hackb07" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <a href="https://github.com/Hackb07" target="_blank"
+                                class="text-slate-400 hover:text-white transition-colors">
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">PMC-Present</h3>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            PMC-Present</h3>
                         <p class="text-slate-400 text-sm mb-6 flex-1">
-                            Smart attendance management system with role-based access, real-time sync, and analytics dashboard.
+                            Smart attendance management system with role-based access, real-time sync, and analytics
+                            dashboard.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">React</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Firebase</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Apps Script</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">React</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Firebase</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Apps
+                                Script</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
+                <div
+                    class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">System Tool</div>
-                            <a href="https://github.com/Hackb07" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">System Tool
+                            </div>
+                            <a href="https://github.com/Hackb07" target="_blank"
+                                class="text-slate-400 hover:text-white transition-colors">
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Lunofetch</h3>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            Lunofetch</h3>
                         <p class="text-slate-400 text-sm mb-6 flex-1">
-                            A lightweight, modern Python-based CLI system information tool. A Neofetch alternative for enthusiasts.
+                            A lightweight, modern Python-based CLI system information tool. A Neofetch alternative for
+                            enthusiasts.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Python</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">CLI</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Linux</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Python</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">CLI</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Linux</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
+                <div
+                    class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
                             <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">DevOps</div>
-                            <a href="https://github.com/Hackb07" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <a href="https://github.com/Hackb07" target="_blank"
+                                class="text-slate-400 hover:text-white transition-colors">
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Luno-OS</h3>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            Luno-OS</h3>
                         <p class="text-slate-400 text-sm mb-6 flex-1">
-                            Automated Arch Linux installation script with Hyprland configuration optimized for AI workflows.
+                            Automated Arch Linux installation script with Hyprland configuration optimized for AI
+                            workflows.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Bash</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Linux</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Automation</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Bash</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Linux</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Automation</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
+                <div
+                    class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
                             <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">Research</div>
-                            <a href="https://github.com/Hackb07" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <a href="https://github.com/Hackb07" target="_blank"
+                                class="text-slate-400 hover:text-white transition-colors">
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Satellite Anomaly Detection</h3>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            Satellite Anomaly Detection</h3>
                         <p class="text-slate-400 text-sm mb-6 flex-1">
                             Hybrid CNN–LSTM architecture for real-time anomaly detection in satellite telemetry data.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Deep Learning</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">CNN</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">LSTM</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Deep
+                                Learning</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">CNN</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">LSTM</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
+                <div
+                    class="group bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all hover:shadow-xl hover:shadow-cyan-500/10 flex flex-col">
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">Computer Vision</div>
-                            <a href="https://github.com/Hackb07" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                            <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">Computer
+                                Vision</div>
+                            <a href="https://github.com/Hackb07" target="_blank"
+                                class="text-slate-400 hover:text-white transition-colors">
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">ANPR-V1</h3>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            ANPR-V1</h3>
                         <p class="text-slate-400 text-sm mb-6 flex-1">
                             Automatic Number Plate Recognition system using computer vision techniques.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Python</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">OpenCV</span>
-                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Machine Learning</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Python</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">OpenCV</span>
+                            <span
+                                class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded border border-slate-700">Machine
+                                Learning</span>
                         </div>
                     </div>
                 </div>
@@ -403,43 +593,51 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                <div
+                    class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                     <div class="bg-slate-800 p-3 rounded-lg flex-shrink-0">
                         <i data-lucide="trophy" class="w-6 h-6 text-yellow-400"></i>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-white mb-2">Top 10 Finalist - AI Hack '25</h3>
-                        <p class="text-slate-400 text-sm mb-2">Recognized for the 'Autonomous Satellite Anomaly Detection System' project among hundreds of participants.</p>
+                        <p class="text-slate-400 text-sm mb-2">Recognized for the 'Autonomous Satellite Anomaly
+                            Detection System' project among hundreds of participants.</p>
                         <span class="text-xs font-mono text-cyan-500">2025</span>
                     </div>
                 </div>
-                <div class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                <div
+                    class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                     <div class="bg-slate-800 p-3 rounded-lg flex-shrink-0">
                         <i data-lucide="file-text" class="w-6 h-6 text-blue-400"></i>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-white mb-2">IEEE Student Symposium</h3>
-                        <p class="text-slate-400 text-sm mb-2">Published research poster on 'AI-Assisted Cybersecurity', focusing on adaptive defense mechanisms.</p>
+                        <p class="text-slate-400 text-sm mb-2">Published research poster on 'AI-Assisted Cybersecurity',
+                            focusing on adaptive defense mechanisms.</p>
                         <span class="text-xs font-mono text-cyan-500">2025</span>
                     </div>
                 </div>
-                <div class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                <div
+                    class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                     <div class="bg-slate-800 p-3 rounded-lg flex-shrink-0">
                         <i data-lucide="star" class="w-6 h-6 text-green-400"></i>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-white mb-2">PyPI Deployment</h3>
-                        <p class="text-slate-400 text-sm mb-2">Successfully built and deployed 'Lunofetch', a cross-platform Python package, to the Python Package Index.</p>
+                        <p class="text-slate-400 text-sm mb-2">Successfully built and deployed 'Lunofetch', a
+                            cross-platform Python package, to the Python Package Index.</p>
                         <span class="text-xs font-mono text-cyan-500">2025</span>
                     </div>
                 </div>
-                <div class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                <div
+                    class="flex items-start gap-4 bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                     <div class="bg-slate-800 p-3 rounded-lg flex-shrink-0">
                         <i data-lucide="github" class="w-6 h-6 text-purple-400"></i>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-white mb-2">Open Source Contributor</h3>
-                        <p class="text-slate-400 text-sm mb-2">Active contributor to 'cnn-visualizer', enhancing model interpretability tools for the community.</p>
+                        <p class="text-slate-400 text-sm mb-2">Active contributor to 'cnn-visualizer', enhancing model
+                            interpretability tools for the community.</p>
                         <span class="text-xs font-mono text-cyan-500">Ongoing</span>
                     </div>
                 </div>
@@ -457,70 +655,86 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
                     <div class="flex items-start justify-between mb-4">
                         <div class="p-2 bg-slate-900 rounded-lg">
                             <i data-lucide="database" class="w-8 h-8 text-cyan-500"></i>
                         </div>
-                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Jan 2024</span>
+                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Jan
+                            2024</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-1">Python for Data Science</h3>
                     <p class="text-cyan-400 text-sm mb-4">IBM Skills Network</p>
                     <p class="text-slate-400 text-sm mb-6 flex-1">
-                        Gained proficiency in Python fundamentals, data structures, and libraries like Pandas and NumPy for data analysis.
+                        Gained proficiency in Python fundamentals, data structures, and libraries like Pandas and NumPy
+                        for data analysis.
                     </p>
-                    <div class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
+                    <div
+                        class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
                         <i data-lucide="award" class="w-4 h-4 text-cyan-500"></i> Verified Credential
                     </div>
                 </div>
 
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
                     <div class="flex items-start justify-between mb-4">
                         <div class="p-2 bg-slate-900 rounded-lg">
                             <i data-lucide="shield-alert" class="w-8 h-8 text-cyan-500"></i>
                         </div>
-                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Jun 2024</span>
+                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Jun
+                            2024</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-1">Web Application Security (OWASP)</h3>
                     <p class="text-cyan-400 text-sm mb-4">Udemy</p>
                     <p class="text-slate-400 text-sm mb-6 flex-1">
-                        Comprehensive training on the OWASP Top 10 vulnerabilities, secure coding practices, and mitigation strategies.
+                        Comprehensive training on the OWASP Top 10 vulnerabilities, secure coding practices, and
+                        mitigation strategies.
                     </p>
-                    <div class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
+                    <div
+                        class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
                         <i data-lucide="award" class="w-4 h-4 text-cyan-500"></i> Verified Credential
                     </div>
                 </div>
 
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
                     <div class="flex items-start justify-between mb-4">
                         <div class="p-2 bg-slate-900 rounded-lg">
                             <i data-lucide="terminal" class="w-8 h-8 text-cyan-500"></i>
                         </div>
-                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Sep 2024</span>
+                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Sep
+                            2024</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-1">Security Architect – Ethical Hacking</h3>
                     <p class="text-cyan-400 text-sm mb-4">Udemy</p>
                     <p class="text-slate-400 text-sm mb-6 flex-1">
-                        Advanced penetration testing methodologies, network scanning, and designing secure system architectures.
+                        Advanced penetration testing methodologies, network scanning, and designing secure system
+                        architectures.
                     </p>
-                    <div class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
+                    <div
+                        class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
                         <i data-lucide="award" class="w-4 h-4 text-cyan-500"></i> Verified Credential
                     </div>
                 </div>
 
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all flex flex-col h-full hover:shadow-lg hover:shadow-cyan-500/10">
                     <div class="flex items-start justify-between mb-4">
                         <div class="p-2 bg-slate-900 rounded-lg">
                             <i data-lucide="bar-chart-3" class="w-8 h-8 text-cyan-500"></i>
                         </div>
-                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Nov 2025</span>
+                        <span class="text-xs text-slate-500 font-mono border border-slate-700 rounded px-2 py-1">Nov
+                            2025</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-1">Data Visualization with Power BI</h3>
                     <p class="text-cyan-400 text-sm mb-4">Coursera</p>
                     <p class="text-slate-400 text-sm mb-6 flex-1">
-                        Mastered creating interactive dashboards, connecting data sources, and delivering business intelligence insights.
+                        Mastered creating interactive dashboards, connecting data sources, and delivering business
+                        intelligence insights.
                     </p>
-                    <div class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
+                    <div
+                        class="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2 text-slate-400 text-sm">
                         <i data-lucide="award" class="w-4 h-4 text-cyan-500"></i> Verified Credential
                     </div>
                 </div>
@@ -535,10 +749,11 @@
             </div>
             <h2 class="text-3xl font-bold text-white mb-4">Ready to see my full professional background?</h2>
             <p class="text-slate-300 mb-8 max-w-xl mx-auto">
-                I've documented my entire journey, skills, and certifications in detail. 
+                I've documented my entire journey, skills, and certifications in detail.
                 Download my resume to get the complete picture of what I bring to the table.
             </p>
-            <a href="https://drive.google.com/file/d/1TQqWBkWYrt3YMPkjL-kyHmm2ENShOTpS/view?usp=sharing" target="_blank" class="px-8 py-4 bg-white text-slate-900 hover:bg-cyan-50 rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 mx-auto shadow-xl">
+            <a href="https://drive.google.com/file/d/1TQqWBkWYrt3YMPkjL-kyHmm2ENShOTpS/view?usp=sharing" target="_blank"
+                class="px-8 py-4 bg-white text-slate-900 hover:bg-cyan-50 rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 mx-auto shadow-xl">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 View Resume
             </a>
@@ -546,31 +761,37 @@
     </section>
 
     <section id="contact" class="py-24 bg-slate-950 relative overflow-hidden">
-        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div
+            class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl">
+        </div>
 
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Let's Collaborate</h2>
             <p class="text-slate-400 mb-12 text-lg">
-                I'm currently looking for internships and research opportunities in AI/ML. 
+                I'm currently looking for internships and research opportunities in AI/ML.
                 If you have an interesting project or just want to say hi, feel free to drop a message!
             </p>
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="mailto:balat4880@gmail.com" class="w-full md:w-auto px-8 py-4 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-3">
+                <a href="mailto:balat4880@gmail.com"
+                    class="w-full md:w-auto px-8 py-4 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-3">
                     <i data-lucide="mail" class="w-5 h-5"></i>
                     Say Hello
                 </a>
-                <a href="https://linkedin.com/in/b-tharun-bala-hackb07" target="_blank" class="w-full md:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-semibold transition-all border border-slate-700 flex items-center justify-center gap-3">
+                <a href="https://linkedin.com/in/b-tharun-bala-hackb07" target="_blank"
+                    class="w-full md:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-semibold transition-all border border-slate-700 flex items-center justify-center gap-3">
                     <i data-lucide="linkedin" class="w-5 h-5"></i>
                     Connect on LinkedIn
                 </a>
             </div>
 
-            <div class="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+            <div
+                class="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
                 <p>© 2025 B. Tharun Bala. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
                     <a href="https://github.com/Hackb07" class="hover:text-cyan-400 transition-colors">GitHub</a>
-                    <a href="https://linkedin.com/in/b-tharun-bala-hackb07" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
+                    <a href="https://linkedin.com/in/b-tharun-bala-hackb07"
+                        class="hover:text-cyan-400 transition-colors">LinkedIn</a>
                     <a href="https://www.kaggle.com/balatharun" class="hover:text-cyan-400 transition-colors">Kaggle</a>
                 </div>
             </div>
@@ -579,4 +800,5 @@
 
     <script src="./main.js"></script>
 </body>
+
 </html>

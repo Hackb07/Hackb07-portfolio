@@ -97,3 +97,36 @@
         init();
     }
 })();
+
+// Time Travel Glitch Logic
+window.startTimelineGlitch = function () {
+    const overlay = document.getElementById('transition-overlay');
+    const yearEl = document.getElementById('countdown-year');
+
+    // Show overlay and apply glitch to body
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.classList.add('opacity-100');
+    document.body.classList.add('time-travel-glitch', 'overflow-hidden');
+
+    // Drop nav
+    const nav = document.getElementById('navbar');
+    if (nav) nav.style.display = 'none';
+
+    let currentYear = 2026;
+
+    let yearInterval = setInterval(() => {
+        currentYear -= 1;
+        yearEl.innerText = currentYear;
+
+        if (currentYear < 2010) yearEl.style.color = '#ef4444'; // red
+        if (currentYear < 2000) yearEl.style.color = '#39ff14'; // retro green
+
+        if (currentYear <= 1998) {
+            clearInterval(yearInterval);
+
+            // Redirect to retro theme
+            window.location.href = './win98.html';
+        }
+    }, 60); // fast countdown
+};
+
